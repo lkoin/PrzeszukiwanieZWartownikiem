@@ -3,7 +3,7 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class Main {
-    public static final int SIZE_ARRAY=15;
+    public static final int SIZE_ARRAY=10;
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -28,21 +28,25 @@ public class Main {
         boolean found = false;
         for (int i = 0; i < SIZE_ARRAY; i++) {
 
-            if (fillArray()[i] == lookedForNumber && fillArray()[i] != SIZE_ARRAY - 1) {
-                found=true;
+            if (fillArray()[i] == lookedForNumber) {
+                if (fillArray()[i] == (SIZE_ARRAY - 1)) {
+                    found = false;
+                } else
+                    found = true;
                 break;
+            } else {
+                found = false;
             }
-            else
-                found=false;
 
 
         }
-        if (found==false) {
-            System.out.println("Znaleziono liczbe w zbiorze" + lookedForNumber);
+        if (found==true) {
+            System.out.println("Znaleziono liczbe w zbiorze: " + lookedForNumber);
         }
-        else {
+        else if (found!=true){
             System.out.println("Nie znaleziono liczby w zbiorze");
         }
+        else System.out.println("Bląd");
 
 
 
