@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import static java.lang.Math.random;
+
 public class Main {
     public static final int SIZE_ARRAY=50;
     public static void main(String[] args)
@@ -11,6 +13,10 @@ public class Main {
     }
 
     public static int[] fillArray() {
-        int[]arrayOfNumbers = new int[];
+        int[]arrayOfNumbers = new int[SIZE_ARRAY];
+        for (int i =0;i<SIZE_ARRAY;i++) {
+            arrayOfNumbers[i] = (int) (random() * 100);
+        }
+        return arrayOfNumbers;
     }
 }
