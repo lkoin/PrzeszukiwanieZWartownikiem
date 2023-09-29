@@ -3,17 +3,20 @@ import java.util.Scanner;
 import static java.lang.Math.random;
 
 public class Main {
-    public static final int SIZE_ARRAY=10;
+    public static final int SIZE_ARRAY=15;
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
-        for (int i=0;i<SIZE_ARRAY;i++) {
-            System.out.print(fillArray()[i]+ ", ");
-        }
+//        for (int i=0;i<SIZE_ARRAY;i++) {
+//            System.out.print(fillArray()[i]+ ", ");
+//        }
+
         System.out.println("\n Podaj liczbe ktora chcesz odszukac w zbiorze: ");
         int lookedForNumber = scanner.nextInt();
+        int rezutlat =findArray(lookedForNumber,fillArray());
 
-        findArray(lookedForNumber);
+        System.out.println("Podana liczba znajduje sie pod indexem = "+rezutlat);
+
     }
 
     public static int[] fillArray() {
@@ -24,31 +27,24 @@ public class Main {
         return arrayOfNumbers;
     }
 
-    public static void findArray(int lookedForNumber) {
-        boolean found = false;
+    public static int findArray(int lookedForNumber,int[] arrayOfNumbers) {
+        int[] arrayNumbersWithSentry = new int[SIZE_ARRAY + 1];
         for (int i = 0; i < SIZE_ARRAY; i++) {
-
-            if (fillArray()[i] == lookedForNumber) {
-                if (fillArray()[i] == (SIZE_ARRAY - 1)) {
-                    found = false;
-                } else
-                    found = true;
+            System.out.print(arrayOfNumbers[i]+ ", ");
+            arrayNumbersWithSentry[i] = arrayOfNumbers[i];
+        }
+        arrayNumbersWithSentry[SIZE_ARRAY] = lookedForNumber;
+        int indexNumber = 0;
+        for (int i = 0; i <= SIZE_ARRAY; i++) {
+            if (arrayNumbersWithSentry[i] == lookedForNumber) {
+                indexNumber = i;
                 break;
-            } else {
-                found = false;
             }
 
-
         }
-        if (found==true) {
-            System.out.println("Znaleziono liczbe w zbiorze: " + lookedForNumber);
-        }
-        else if (found!=true){
-            System.out.println("Nie znaleziono liczby w zbiorze");
-        }
-        else System.out.println("Bląd");
+        return indexNumber;
+    }
 
 
 
     }
-}
