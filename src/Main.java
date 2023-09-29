@@ -14,8 +14,10 @@ public class Main {
         System.out.println("\n Podaj liczbe ktora chcesz odszukac w zbiorze: ");
         int lookedForNumber = scanner.nextInt();
         int rezutlat =findArray(lookedForNumber,fillArray());
-
-        System.out.println("Podana liczba znajduje sie pod indexem = "+rezutlat);
+        if (rezutlat==0) {
+            System.out.println("Podana liczba nie znajduje sie pod indexem");
+        }
+        else System.out.println("Podana liczba znajduje sie pod indexem: " + rezutlat);
 
     }
 
@@ -39,6 +41,9 @@ public class Main {
             if (arrayNumbersWithSentry[i] == lookedForNumber) {
                 indexNumber = i;
                 break;
+            }
+            else {
+            return 0;
             }
 
         }
